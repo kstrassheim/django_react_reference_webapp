@@ -141,6 +141,7 @@ webapp/coverage
 
 # production
 webapp/build
+webapp/static
 
 # misc
 webapp/.DS_Store

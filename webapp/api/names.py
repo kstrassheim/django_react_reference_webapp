@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.urls import path, re_path
+import json
 
 urls = [] 
 
@@ -32,8 +33,14 @@ urls+=[re_path(r'^api/print_userid_param/(?P<user_id>\D+)/', print_username_para
 # Remark the overloading of string parameter over same url
 def post_username_param(request):
     # todo encode data
-    data = {"user": request.POST["user"]}
-    return JsonResponse(data)
+
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        data = post_data.get("user")
+        print(post_data)
+        return JsonResponse(data, safe=False)
+    else:
+        raise Exception(f"Method {request.method} not allowed")
 urls+=[path('api/post_user_param', post_username_param)]
 
 

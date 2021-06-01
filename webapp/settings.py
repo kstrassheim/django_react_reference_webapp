@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'create_react_app'
+    'create_react_app',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -68,8 +69,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'webapp.wsgi.application'
-
+# WSGI_APPLICATION = 'webapp.wsgi.application'
+ASGI_APPLICATION = "webapp.asgi.application"
+CHANNEL_LAYERS = { "default": {"BACKEND": "channels.layers.InMemoryChannelLayer" }}
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

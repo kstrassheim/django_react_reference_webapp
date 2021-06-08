@@ -31,19 +31,23 @@ steps:
     python webapp.py collectstatic --noinput
   displayName: 'python install'
 
+- script: |
+    python webapp.py collectstatic --noinput
+  displayName: 'Collect static files'
+
 - task: CopyFiles@1
   inputs:
     SourceFolder: './'
     Contents: |
      **
      !node_modules/**
-     !static/**
      !src/**
      !__pycache__/**
      !README.md
      !.gitignore
      !package*.json
      !pipeline-*.yml
+     !static/index.html
      !public/index.html
      !build/index.html
     TargetFolder: '$(build.artifactstagingdirectory)'

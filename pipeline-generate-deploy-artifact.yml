@@ -47,9 +47,6 @@ steps:
      !.gitignore
      !package*.json
      !pipeline-*.yml
-     !static/index.html
-     !public/index.html
-     !build/index.html
     TargetFolder: '$(build.artifactstagingdirectory)'
     CleanTargetFolder: true
     OverWrite: true

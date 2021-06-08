@@ -21,12 +21,19 @@ steps:
   displayName: 'Use Python 3.8'
 
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt --no-cache-dir
     npm install
     npm run build
-    python webapp.py collectstatic --noinput
   displayName: 'Install pip and npm dependencies and build project'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt --no-cache-dir
+    python webapp.py collectstatic --noinput
+  displayName: 'python install collect static files'
+
+- script: |
+    python webapp.py collectstatic --noinput
+  displayName: 'Collect static files'
 
 - task: CopyFiles@1
   inputs:
@@ -42,6 +49,7 @@ steps:
      !.gitignore
      !package*.json
      !pipeline-*.yml
+     !static/index.html
     TargetFolder: '$(build.artifactstagingdirectory)'
     CleanTargetFolder: true
     OverWrite: true

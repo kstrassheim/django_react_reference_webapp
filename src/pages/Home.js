@@ -3,9 +3,8 @@ import './Home.css';
 
 function Home(props) {
     const [counter, setCounter] = useState(0);
-
     // consume websocket connection
-    const countSocket = new WebSocket(`ws://${window.location.host}/socket/count`);
+    const countSocket = new WebSocket(`${window.location.protocol == "https:" ? "wss:" : "ws:"}://${window.location.host}/socket/count`);
     countSocket.onmessage = (e) => {
         const ct = parseInt(JSON.parse(e.data)["counter"]);
         // Update counter only on websocket events

@@ -29,6 +29,7 @@ from dotenv import load_dotenv
 # SECURITY WARNING: don't run with debug turned on in production!
 load_dotenv()
 DEBUG:bool = getenv('DEBUG', 'False').lower() == 'true'
+DEBUG_FRONTEND:bool = getenv('DEBUG_FRONTEND', 'False').lower() == 'true'
 ALLOWED_HOSTS = [getenv('ALLOWED_HOSTS', '*')]
 
 # Application definition
@@ -126,7 +127,7 @@ CREATE_REACT_APP = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': REACT_BUILD_DIRECTORY,  
         'FRONT_END_SERVER': WEBPACK_DEV_SERVER_URL,
-        'is_dev': DEBUG,
+        'is_dev': DEBUG_FRONTEND,
     }
 }
 

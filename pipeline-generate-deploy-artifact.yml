@@ -42,7 +42,6 @@ steps:
      **
      !node_modules/**
      !public/**
-     !build/**
      !src/**
      !__pycache__/**
      !README.md

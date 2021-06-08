@@ -29,9 +29,7 @@ from dotenv import load_dotenv
 # SECURITY WARNING: don't run with debug turned on in production!
 load_dotenv()
 DEBUG:bool = getenv('DEBUG', 'False').lower() == 'true'
-
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [getenv('ALLOWED_HOSTS', '*')]
 
 # Application definition
 

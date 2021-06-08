@@ -55,7 +55,7 @@ steps:
     OverWrite: true
     flattenFolders: false
 
-- task: ArchiveFiles@2
+- task: ZipFiles@2
   inputs:
     rootFolderOrFile: '$(build.artifactstagingdirectory)'
     includeRootFolder: false
@@ -63,10 +63,12 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/publish.zip'
     replaceExistingArchive: true
 
-- task: DeleteFiles@1
+- task: DeleteNonZipFiles@1
   inputs:
     SourceFolder: '$(build.artifactstagingdirectory)'
-    Contents: '!*.zip'
+    Contents: |
+     **
+     !*.zip
 
 - task: PublishBuildArtifacts@1
   inputs:

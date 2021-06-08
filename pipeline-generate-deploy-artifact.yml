@@ -41,7 +41,6 @@ steps:
     Contents: |
      **
      !node_modules/**
-     !public/**
      !src/**
      !__pycache__/**
      !README.md

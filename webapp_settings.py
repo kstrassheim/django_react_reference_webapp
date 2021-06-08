@@ -23,10 +23,14 @@ PROJECT_DIR = Path(__file__).parent.resolve()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)c_fz7uigyit*w6-#107v&8o6(4@sm%y^wl9=zzw3x(5%e$ml2'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+from os import getenv
+from dotenv import load_dotenv
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# SECURITY WARNING: don't run with debug turned on in production!
+load_dotenv()
+DEBUG:bool = getenv('DEBUG', 'False').lower() == 'true'
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'webapp.urls'
+ROOT_URLCONF = 'webapp_urls'
 
 TEMPLATES = [
     {
@@ -70,7 +74,7 @@ TEMPLATES = [
 ]
 
 # WSGI_APPLICATION = 'webapp.wsgi.application'
-ASGI_APPLICATION = "webapp.asgi.application"
+ASGI_APPLICATION = "webapp_asgi.application"
 CHANNEL_LAYERS = { "default": {"BACKEND": "channels.layers.InMemoryChannelLayer" }}
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

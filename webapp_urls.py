@@ -18,8 +18,8 @@ from django.urls import path, re_path
 from django.shortcuts import render
 from django.contrib.staticfiles.urls import urlpatterns as staticurlpatterns
 from django.views.static import serve 
-from .api import urls as apiurls
-from .settings import DEBUG, STATIC_ROOT, WEBPACK_DEV_SERVER_URL
+from api import urls as apiurls
+from webapp_settings import DEBUG, STATIC_ROOT, WEBPACK_DEV_SERVER_URL
 
 # ONLY on debug fix for webpack fast refresh
 from proxy.views import proxy_view

@@ -23,13 +23,13 @@ steps:
 - script: |
     npm install
     npm run build
-  displayName: 'Install pip and npm dependencies and build project'
+  displayName: 'Install npm dependencies and build frontend'
 
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt --no-cache-dir
     python webapp.py collectstatic --noinput
-  displayName: 'python install collect static files'
+  displayName: 'python install'
 
 - script: |
     python webapp.py collectstatic --noinput
